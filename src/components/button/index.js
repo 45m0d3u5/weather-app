@@ -7,5 +7,6 @@ export const Button = ({onClick}) => {
         <button className={styles.button} onClick={onClick}>
             <i class="fas fa-search"></i>
         </button>
+        //edik
     );
 }
