@@ -1,0 +1,90 @@
+.MainPage {
+  background: black;
+  background-size: cover;
+  height: 100vh;
+  text-shadow: 2px 2px black !important;
+  background-image: var(--image);
+  .Main {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+
+    .LeftContainer {
+      color: white;
+      width: 70%;
+      display: flex;
+      align-items: flex-end;
+
+      .LeftInner {
+        padding-bottom: 30px;
+        padding-left: 30px;
+
+        .Temp {
+          font-size: 125px;
+        }
+
+        .CityDate {
+          font-size: 75px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          padding-bottom: 15px;
+
+          .City {
+            width: 100%;
+            text-align: start;
+            color: white;
+          }
+
+          .Date {
+            font-size: 25px;
+            width: 100%;
+            text-align: start;
+          }
+        }
+      }
+
+      div {
+        display: flex;
+        align-items: flex-end;
+        margin-left: 10px;
+        flex-direction: row;
+      }
+    }
+
+    .RightContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 30%;
+      height: 100%;
+      color: white;
+      backdrop-filter: blur(30px);
+
+      .InputContainer {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .InputCont {
+          display: flex;
+          width: 100%;
+          padding-left: 40px;
+          align-items: flex-end;
+        }
+
+        .ButtonContainer {
+          display: flex;
+          width: 20%;
+        }
+      }
+
+      .WeatherInfo {
+        width: 80%;
+        padding-top: 50px;
+      }
+    }
+  }
+}
