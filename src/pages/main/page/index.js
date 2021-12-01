@@ -20,7 +20,7 @@ export const Main = () => {
     if (!mainRef.current) return;
     mainRef.current.style.setProperty('--image', `url(${url})`);
   },[city, url]);
-
+// при изменении города получаем погоду
   return (
     <div
       className={styles.MainPage} 
