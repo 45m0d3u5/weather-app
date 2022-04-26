@@ -14,7 +14,8 @@ export const $weather = createStore(null)
 export const cityChanged = createEvent();
 export const weatherSearched = createEvent();
 export const imageSearched = createEvent();
-export const $city = restore(cityChanged, 'Tashkent')
+export const pageOpened = createEvent();
+export const $city = restore(cityChanged, 'Hawaii')
 export const $image = restore(getImageFx, 'url')
 
 $weather
@@ -33,7 +34,7 @@ $weather
 sample({
   clock: guard({
     source: $city,
-    clock: weatherSearched,
+    clock: [weatherSearched, pageOpened],
     filter: (city) => city.length > 3
   }),
   source: $city,
@@ -41,3 +42,4 @@ sample({
   target: [getWeatherFx, getImageFx]
 })
 
+$image.watch((e) => console.log(e, 'edik'))

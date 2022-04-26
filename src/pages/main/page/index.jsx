@@ -3,7 +3,7 @@ import { Input } from "../../../components/input";
 import { Button } from "../../../components/button";
 import { Weather } from "../../../components/weather";
 import { useStore } from "effector-react";
-import { $city, cityChanged, weatherSearched, getWeatherFx, $image, $weather } from "../model/model";
+import {$city, cityChanged, weatherSearched, getWeatherFx, $image, $weather, pageOpened} from "../model/model";
 import { Loader } from "../../../components/loader";
 import { useEffect, useRef } from "react";
 
@@ -17,10 +17,14 @@ export const Main = () => {
   const mainRef = useRef();
 
   useEffect(() => {
+    pageOpened();
+  }, [])
+
+  useEffect(() => {
     if (!mainRef.current) return;
     mainRef.current.style.setProperty('--image', `url(${url})`);
   },[city, url]);
-// при изменении города получаем погоду
+
   return (
     <div
       className={styles.MainPage} 
