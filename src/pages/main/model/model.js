@@ -34,7 +34,7 @@ $weather
 sample({
   clock: guard({
     source: $city,
-    clock: weatherSearched,
+    clock: [weatherSearched, pageOpened],
     filter: (city) => city.length > 3
   }),
   source: $city,
@@ -42,3 +42,4 @@ sample({
   target: [getWeatherFx, getImageFx]
 })
 
+$image.watch((e) => console.log(e, 'edik'))

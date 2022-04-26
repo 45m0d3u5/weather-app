@@ -18,7 +18,6 @@ export const Main = () => {
 
   useEffect(() => {
     pageOpened();
-    weatherSearched();
   }, [])
 
   useEffect(() => {
