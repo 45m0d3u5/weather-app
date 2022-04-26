@@ -14,7 +14,8 @@ export const $weather = createStore(null)
 export const cityChanged = createEvent();
 export const weatherSearched = createEvent();
 export const imageSearched = createEvent();
-export const $city = restore(cityChanged, 'Tashkent')
+export const pageOpened = createEvent();
+export const $city = restore(cityChanged, 'Hawaii')
 export const $image = restore(getImageFx, 'url')
 
 $weather
