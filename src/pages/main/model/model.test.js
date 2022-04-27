@@ -1,4 +1,4 @@
-import {$image, getImageFx, pageOpened} from "./model";
+import {$image, getImageFx, getWeatherFx, pageOpened} from "./model";
 import faker from '@faker-js/faker'
 import {allSettled, fork} from "effector";
 import {root} from "effector-root";
@@ -15,7 +15,10 @@ const image = imageCreate();
 describe('page opened', () => {
     it('should start fetching image', async () => {
         const handleSearchImage = jest.fn(() => image)
-        const handlers = new Map().set(getImageFx, handleSearchImage)
+        const handleWeatherSearch = jest.fn();
+        const handlers = new Map()
+            .set(getImageFx, handleSearchImage)
+            .set(getWeatherFx, handleWeatherSearch)
 
         const scope = fork(root, {
             handlers,
@@ -26,6 +29,7 @@ describe('page opened', () => {
             params: {},
         })
         expect(handleSearchImage).toBeCalled()
+        expect(handleWeatherSearch).toBeCalled()
         expect(scope.getState($image)).toBe(image.data.image)
 
     })
