@@ -29,7 +29,6 @@ $weather
       }
     }
   })
-  .watch(console.log)
 
 sample({
   clock: guard({
