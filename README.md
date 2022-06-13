@@ -2,11 +2,10 @@
 
 Clone repo
 
-`npm i`
-
 
 `cd weather-app`
 
+`npm i`
 
 `npm start`
 
