@@ -1,7 +1,12 @@
-import React from "react";
+import React, {ChangeEventHandler, FC} from "react";
 import styles from "./style.module.scss";
 
-export const Input = ({onChange, value}) => {
+type Props = {
+    onChange: ChangeEventHandler<HTMLInputElement>,
+    value: string,
+}
+
+export const Input: FC<Props> = ({onChange, value}) => {
     return (
         <div>
         <input
@@ -14,5 +19,4 @@ export const Input = ({onChange, value}) => {
         />
         </div>
     );
-    
 }

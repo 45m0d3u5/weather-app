@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from './style.module.scss';
 
-export const Weather = ({ clouds, wind, humidity}) => {
+
+type Props = {
+    clouds: number,
+    wind: number,
+    humidity: number
+}
+
+export const Weather: FC<Props> = ({ clouds, wind, humidity}) => {
     return (
         <ul className={styles.weather}>
             <li className={styles.weatherList}>Clouds {clouds}%</li>

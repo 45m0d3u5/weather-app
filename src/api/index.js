@@ -5,7 +5,13 @@ const client = createClient('563492ad6f91700001000001f567bf7313f644c2abc32ce42c2
 
 export const fetchImage = (city) => {
     return new Promise((resolve, reject) => {
-        client.photos.search({ query: city, page: 1, per_page: 1, orientation: 'landscape', locale: 'ru-RU' })
+        client.photos.search({
+            query: city,
+            page: 2,
+            per_page: 2,
+            orientation: 'landscape',
+            locale: 'en-US',
+        })
             .then((result) => {
                 if (result.total_results < 1) reject('No results') 
                 resolve(result.photos[0].src.landscape)

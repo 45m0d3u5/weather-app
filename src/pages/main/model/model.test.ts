@@ -26,8 +26,8 @@ describe('page opened', () => {
 
         await allSettled(pageOpened, {
             scope,
-            params: {},
         })
+
         expect(handleSearchImage).toBeCalled()
         expect(handleWeatherSearch).toBeCalled()
         expect(scope.getState($image)).toBe(image.data.image)
