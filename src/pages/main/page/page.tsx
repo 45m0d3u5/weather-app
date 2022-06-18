@@ -1,20 +1,18 @@
-import styles from "./styles.module.scss";
-import { Input } from "../../../components/input";
-import { Button } from "../../../components/button";
-import { Weather } from "../../../components/weather";
-import { useStore } from "effector-react";
+import styles from './styles.module.scss';
+import {Loader, Button, Weather, Input} from '../../../ui'
+import {useEvent, useStore} from "effector-react";
 import {$city, cityChanged, weatherSearched, getWeatherFx, $image, $weather, pageOpened} from "../model/model";
-import { Loader } from "../../../components/loader";
-import { useEffect, useRef } from "react";
+import {FC, useEffect, useRef} from "react";
 
 
-export const Main = () => {
+export const Main: FC = () => {
   const city = useStore($city);
   const isWeatherLoading = useStore(getWeatherFx.pending);
   const url = useStore($image);
   const weather = useStore($weather);
   const date = new Date().toLocaleDateString();
-  const mainRef = useRef();
+  const mainRef = useRef<HTMLDivElement>(null);
+  const handleWeatherSearch = useEvent(weatherSearched)
 
   useEffect(() => {
     pageOpened();
@@ -22,7 +20,9 @@ export const Main = () => {
 
   useEffect(() => {
     if (!mainRef.current) return;
-    mainRef.current.style.setProperty('--image', `url(${url})`);
+
+    mainRef.current.style?.setProperty('--image', `url(${url})`);
+
   },[city, url]);
 
   return (
@@ -41,7 +41,7 @@ export const Main = () => {
                   {weather && weather.name}
                 </span>
               </div>
-              <span className={styles.Date}>{date} </span>
+              <span className={styles.Date}>{date}</span>
             </div>
           </div>
         </div>
@@ -55,7 +55,10 @@ export const Main = () => {
               {isWeatherLoading ? (
                 <Loader />
               ) : (
-                <Button onClick={weatherSearched} title="Get Weather" />
+                <Button
+                    //@ts-ignore
+                    onClick={handleWeatherSearch}
+                />
               )}
             </div>
           </div>

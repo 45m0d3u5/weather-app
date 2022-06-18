@@ -1,6 +1,7 @@
 import {createStore, createEvent, createEffect, sample, guard, restore } from 'effector-root';
 import { fetchWeather } from '../../../api';
 import { fetchImage } from '../../../api';
+import {WeatherContract} from "./model.types";
 
 export const getWeatherFx = createEffect({
     handler: fetchWeather
@@ -10,12 +11,11 @@ export const getImageFx = createEffect({
     handler: fetchImage
 })
 
-export const $weather = createStore(null)
-export const cityChanged = createEvent();
-export const weatherSearched = createEvent();
-export const imageSearched = createEvent();
-export const pageOpened = createEvent();
-export const $city = restore(cityChanged, 'Hawaii')
+export const $weather = createStore<WeatherContract | null>(null)
+export const cityChanged = createEvent<string>();
+export const weatherSearched = createEvent<string>();
+export const pageOpened = createEvent<any>();
+export const $city = restore(cityChanged, 'New York')
 export const $image = restore(getImageFx, 'url')
 
 $weather
@@ -40,5 +40,3 @@ sample({
   fn: (city) => city,
   target: [getWeatherFx, getImageFx]
 })
-
-$image.watch((e) => console.log(e, 'edik'))
